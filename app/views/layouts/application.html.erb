@@ -8,6 +8,11 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%# Adding viewport tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%# Adding React-link-views Pack Tag helper %>
+    <%= javascript_pack_tag 'Index' %>
   </head>
 
   <body>
