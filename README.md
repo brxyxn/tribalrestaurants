@@ -1,24 +1,22 @@
-# README
+# Tribal World Whide - Restaurants Club (Reviews)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an application created for Tribal World Wide as a technical test regarding a job application.
 
-Things you may want to cover:
+This application is open source and you can use it as a reference for learning purposes.
 
-* Ruby version
 
-* System dependencies
+Some useful information you might know about this app:
 
-* Configuration
+* Ruby version = 3.0.0p0
 
-* Database creation
+* Rails version = 6.1.3
 
-* Database initialization
+* Ubuntu 20.04.2 LTS - x64-bit
 
-* How to run the test suite
+* ReactJS Webpack for Ruby on Rails
 
-* Services (job queues, cache servers, search engines, etc.)
+* PostgreSQL version 11.11 for
 
-* Deployment instructions
+* No tests were run for this application
 
-* ...
+* Deployment instructions (pending)
