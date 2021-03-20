@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'restaurants/index'
-      get 'restaurants/create'
-      get 'restaurants/show'
-      get 'restaurants/destroy'
+      post 'restaurants/create'
+      get '/show/:id', to: 'restaurants#show'
+      delete '/destroy/:id', to: 'restaurants#destroy'
     end
   end
+  
   root 'landingpage#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get'/*path' => 'landingpage#index'
 end
