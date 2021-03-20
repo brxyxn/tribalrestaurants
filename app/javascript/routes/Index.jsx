@@ -3,12 +3,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
 import Restaurant from "../components/Restaurant";
+import NewRestaurant from "../components/NewRestaurant";
 
 export default (
     <Router>
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/:id" exact component={Restaurant} />
+            <Route path="/view/:id" exact component={Restaurant} />
+            <Route path="/new" exact component={NewRestaurant} />
         </Switch>
     </Router>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 class Restaurant extends React.Component {
     constructor(props) {
@@ -30,7 +31,7 @@ class Restaurant extends React.Component {
         .catch(() => this.props.history.push("/"));
     }
 
-    // Adding addHtmlEntities method to replase all HTML opening and closing brackets.
+    // Adding addHtmlEntities method to replace all HTML opening and closing brackets.
     addHtmlEntities(str){
         return String(str)
         .replace(/&lt;/g, "<")
@@ -43,25 +44,40 @@ class Restaurant extends React.Component {
         const restaurantDescription = this.addHtmlEntities(restaurant.description);
 
         return (
-            <div className="">
-                <div>
-                    <img src={restaurant.logo} alt={`${restaurant.name} logo`} className="img-fluid" />
-                    <div className="bg-dark">
-                        <h1 className="display-4">{restaurant.name}</h1>
-                    </div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <h4>Description</h4>
-                                <div dangerouslySetInnerHTML={{__html: `${restaurantDescription}`}} />
-                            </div>
-                        </div>
-                    </div>
+            // Need to update layout later
+            <main>
+                {/* Navbar Layout */}
+                <Navbar />
+
+                {/* Displaying Restaurant information */}
+                <section className="container my-5">
                     <div className="links">
                         <Link to="/" className="btn btn-link">Back to restaurants</Link>
                     </div>
-                </div>
-            </div>
+                    <div className="row">
+                        <div className="col-lg-3">
+                            <img src={restaurant.logo} alt={`${restaurant.name} logo`} className="col-12 img-fluid" />
+                        </div>
+                        <div className="col-lg-9">
+                            <h1 className="display-4">{restaurant.name}</h1>
+                            <div dangerouslySetInnerHTML={{__html: `${restaurantDescription}`}} />
+                        </div>
+                    </div>
+                </section>
+
+                <section className="container pictures">
+                    <h4>Pictures</h4>
+                </section>
+
+                <section className="container comments">
+                    <h4>Comments</h4>
+                </section>
+
+                {/* Landing Page Footer */}
+                <footer>
+                    <p className="display-5 vw-50 text-center">Created by <b>Brayan Lopez</b></p>
+                </footer>
+            </main>
         )
     }
 }

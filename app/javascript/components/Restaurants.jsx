@@ -10,6 +10,12 @@ class Restaurants extends React.Component {
             restaurants: []
         };
     }
+    // Adding addHtmlEntities method to replace all HTML opening and closing brackets.
+    addHtmlEntities(str){
+        return String(str)
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">");
+    }
 
     // Getting a JSON response from Index with all objects and 
     // handling error if response comes with an error.
@@ -31,22 +37,24 @@ class Restaurants extends React.Component {
     render() {
         const { restaurants } = this.state;
         const allRestaurants = restaurants.map(( restaurant, index ) => (
-            <div className="col-lg-4 col-md-6 col-sm-12">
-                <div className="card text-dark bg-light mg-3">
-                    <img src={restaurant.logo} alt={`${restaurant.name} logo`} className="card-img-top" />
-                    <div className="card-body">
-                        <h4 className="card-title">{restaurant.name}</h4>
-                        <p className="card-text">{restaurant.description}</p>
-                        <Link to={`/${restaurant.id}`} className="btn btn-primary" role="button">Let's go</Link>
+            <div className=" hover-card col-lg-4 col-md-6 col-sm-12">
+                <Link className="hover-card" to={`/view/${restaurant.id}`}>
+                    <div className="card text-dark bg-light mg-3">
+                        <img src={restaurant.logo} alt={`${restaurant.name} logo`} className="card-img-top" />
+                        <div className="card-body">
+                            <h4 className="card-title">{restaurant.name}</h4>
+                            <div className="card-text" dangerouslySetInnerHTML={{__html: `${this.addHtmlEntities(restaurant.description)}`}} />
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
+            
         ));
 
         // Render an option to create a new restaurant if we don't have one yet.
         const noRestaurant = (
             <div className="vw-100">
-                <h4>No restaurants yet. Why not <Link to="/new_restaurant">create one</Link></h4>
+                <h4>No restaurants yet. Why not <Link to="/new">create one</Link></h4>
             </div>
         );
         
