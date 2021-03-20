@@ -75,7 +75,7 @@ export default () => (
         </section>
 
         <footer>
-            <p className="display-5 vw-50 text-center">Created by Brayan Lopez</p>
+            <p className="display-5 vw-50 text-center">Created by <b>Brayan Lopez</b></p>
         </footer>
     </main>
 );
