@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+// Importing Bootstrap and application.css to the Webpack
+import "bootstrap"
+import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
