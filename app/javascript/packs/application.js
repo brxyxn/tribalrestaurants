@@ -10,7 +10,7 @@ import "channels"
 
 // Importing Bootstrap and application.css to the Webpack
 import "bootstrap"
-import "../stylesheets/application"
+//import "../../assets/stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
