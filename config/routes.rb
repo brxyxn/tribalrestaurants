@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   end
   
   root 'landingpage#index'
-  get'/*path' => 'landingpage#index'
+  get '/*path' => 'landingpage#index'
 end

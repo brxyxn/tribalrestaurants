@@ -25,23 +25,10 @@ main {
     overflow-x: hidden;
 }
 
-/* Custom Colors */
-.bg_primary-color {
-    background-color: #FFFFFF;
-}
-.primary-color {
-    background-color: #FFFFFF;
-}
-.bg_secondary-color {
-    background-color: #293241;
-}
-.secondary-color {
-    color: #293241;
-}
 
 /* Custom buttons */
 .custom-button.btn {
-    background-color: #293241;
+    background-color: #497487;
     color: #FFF;
     border: none;
 }
@@ -50,21 +37,9 @@ main {
     border: none;
 }
 
-/* Hero styles */
-.hero {
-    width: 100vw;
-    height: 50vh;
-}
-.hero img {
-    object-fit: cover;
-    object-position: top;
-    height: 100%;
-    width: 100%;
-}
-.overlay {
-    height: 100%;
-    width: 100%;
-    opacity: 0.4;
+/* Overriding primary color from Bootstrap */
+.btn-primary{
+    background-color: #33A6D6 !important;
 }
 
 /* Cards spacing */
@@ -79,4 +54,6 @@ main {
 /* Footer Styles */
 footer {
     padding: 2vh 0;
+    background-color: #444;
+    color: #FFF;
 }
