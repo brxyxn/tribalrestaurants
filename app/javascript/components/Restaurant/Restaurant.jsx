@@ -22,7 +22,6 @@ class Restaurant extends React.Component {
         } = this.props;
 
         const url = `/api/v1/restaurants/${id}`;
-        const urlComments = `/api/v1/restaurants/${id}/comments`;
 
         fetch(url)
         .then(response => {
@@ -43,8 +42,7 @@ class Restaurant extends React.Component {
     }
 
     render() {
-        const{ restaurant } = this.state;
-        console.log(restaurant);
+        const { restaurant } = this.state;
         const restaurantDescription = this.addHtmlEntities(restaurant.description);
 
         return (
