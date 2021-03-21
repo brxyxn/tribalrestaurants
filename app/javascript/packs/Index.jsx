@@ -5,10 +5,11 @@
 // Default Modules
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import TestRenderer from 'react-test-renderer'
+// import PropTypes from 'prop-types'
 
 // Importing other modules we'll use for this application
-import { render } from "react-dom";
+// import { render } from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';

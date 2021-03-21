@@ -1,6 +1,6 @@
+// www.example.com/#index
 // Creating Home component for the Landing Page, this will contain all the restaurants 'view' buttons
 import React from "react";
-import { Link } from "react-router-dom";
 // Importing Restaurants Object to render the returned result from BackEnd into the Landingpage
 import Restaurant from './Restaurant';
 import Navbar from "../Layout/Navbar";

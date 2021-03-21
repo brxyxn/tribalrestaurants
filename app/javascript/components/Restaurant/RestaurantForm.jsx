@@ -1,7 +1,56 @@
-import React from 'react';
+// www.example.com/new#create
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Footer from '../Layout/Footer';
 import Navbar from '../Layout/Navbar';
+
+const RestaurantForm = (props) => {
+    const { name, description } = ""
+    const { post, setPost } = useState({})
+
+    useEffect(() => {
+        const url = `api/v1/restaurants/`
+
+        axios.get(url)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(response => console.log('Something went wrong', response))
+    }, [])
+
+    return(
+        // Need to update layout later
+        <main>
+            {/* Navbar Layout */}
+            <Navbar />
+
+            {/* Displaying Restaurant Creation Form */}
+            <div className="container my-5">
+                <div className="row">
+                    <div className="col-12">
+                        <h1 className="font-weight-normal mb-5">Add a new restaurant</h1>
+                        <form>
+                            <div className="form-group">
+                                <label htmlFor="restaurantName">Restaurant Name</label>
+                                <input type="text" name="name" id="restaurantName" className="form-control" required />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="restaurantDescription">Restaurant Description</label>
+                                <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required />
+                            </div>
+                            <button type="submit" className="btn btn-primary mt-3">Create Restaurant</button>
+                            <Link to="/" className="btn btn-link mt-3">Back to restaurants</Link>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {/* Landing Page Footer */}
+            <Footer />
+        </main>
+    )
+}
 
 class NewRestaurant extends React.Component{
     constructor(props){
@@ -74,36 +123,9 @@ class NewRestaurant extends React.Component{
     render(){
         return(
             // Need to update layout later
-            <main>
-                {/* Navbar Layout */}
-                <Navbar />
-
-                {/* Displaying Restaurant Creation Form */}
-                <div className="container my-5">
-                    <div className="row">
-                        <div className="col-12">
-                            <h1 className="font-weight-normal mb-5">Add a new restaurant</h1>
-                            <form onSubmit={this.onSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="restaurantName">Restaurant Name</label>
-                                    <input type="text" name="name" id="restaurantName" className="form-control" required onChange={this.onChange} />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="restaurantDescription">Restaurant Description</label>
-                                    <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required onChange={this.onChange} />
-                                </div>
-                                <button type="submit" className="btn btn-primary mt-3">Create Restaurant</button>
-                                <Link to="/" className="btn btn-link mt-3">Back to restaurants</Link>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Landing Page Footer */}
-                <Footer />
-            </main>
+            <main></main>
         );
     }
 }
 
-export default NewRestaurant;
+export default RestaurantForm;

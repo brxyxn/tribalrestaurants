@@ -20,3 +20,5 @@ Some useful information you might know about this app:
 * No tests were run for this application
 
 * Deployment instructions (pending)
+
+* Using Axios to handle JSON responses

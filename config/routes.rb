@@ -5,8 +5,8 @@ Rails.application.routes.draw do
       # post 'restaurants/create'
       # get '/show/:id', to: 'restaurants#show'
       # delete '/destroy/:id', to: 'restaurants#destroy'
-      resources :restaurants, only: [:index, :create, :show, :destroy]
-      resources :comments, only: [:index, :create]
+      resources :restaurants, only: [:index, :create, :update, :show, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
   

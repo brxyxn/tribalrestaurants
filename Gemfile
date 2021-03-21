@@ -17,7 +17,9 @@ gem 'webpacker', '~> 5.0'
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-
+# Installing Fast JSONApi. Read more: https://github.com/Netflix/fast_jsonapi
+# This gem will help to perform faster than Active Model
+gem 'fast_jsonapi'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
