@@ -1,6 +1,19 @@
-// Let's render React to send it in the entry file.
-
 import React from "react";
-import Routes from "../routes/Index";
+import { Route, Switch } from "react-router-dom";
+import NewRestaurant from "./Restaurant/NewRestaurant";
+import Restaurant from "./Restaurant/Restaurant";
+import Restaurants from "./Restaurants/Restaurants";
+import Navbar from './Layout/Navbar';
 
-export default props => <>{Routes}</>;
+// This document was modified removing the modute to Routes path
+// Based on testing it worked more efficiently
+const App = () => {
+    return(
+        <Switch>
+            <Route path="/" exact component={Restaurants} />
+            <Route path="/view/:id" exact component={Restaurant} />
+            <Route path="/new" exact component={NewRestaurant} />
+        </Switch>
+    )
+}
+export default App;

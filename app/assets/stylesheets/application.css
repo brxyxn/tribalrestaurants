@@ -58,8 +58,8 @@ main {
     text-decoration: none;
 }
 .card:hover{
-    box-shadow: 0 40px 60px -20px rgba(12, 5, 62, 0.15);
-    border: 1px solid #33A6D6;
+    box-shadow: 0 20px 30px -10px rgba(12, 5, 62, 0.15);
+    border: 1px solid #293241;
     position: relative;
 }
 .card:hover:after{
@@ -69,7 +69,7 @@ main {
     color: #FFF;
     top: 10px;
     right: 10px;
-    border:1px solid rgba(63, 194, 218, 0.575);
+    border:1px solid #293241;
     padding: 0.5rem 1rem;
     border-radius: 4px;
 }

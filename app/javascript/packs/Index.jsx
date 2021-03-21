@@ -13,12 +13,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+// Refactoring code, importing needed modules
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import App from "../components/App";
 
 // Adding Listener to insert/render code using React renders
 document.addEventListener("DOMContentLoaded", () => {
-  render(
-    <App />,
+  ReactDOM.render(
+    <Router>
+      <Route path="/" component={App} />
+    </Router>,
     document.body.appendChild(document.createElement("div"))
   );
 });

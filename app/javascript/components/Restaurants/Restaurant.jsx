@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // This class has a constructor that is initializing a state object to hold
 // the state of each restaurant, initializing an empty array (JSON response).
-class Restaurants extends React.Component {
+class Restaurant extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +20,7 @@ class Restaurants extends React.Component {
     // Getting a JSON response from Index with all objects and 
     // handling error if response comes with an error.
     componentDidMount() {
-        const url = "/api/v1/restaurants/index";
+        const url = "/api/v1/restaurants";
         fetch(url)
         .then(response => {
             if (response.ok) {
@@ -37,8 +37,8 @@ class Restaurants extends React.Component {
     render() {
         const { restaurants } = this.state;
         const allRestaurants = restaurants.map(( restaurant, index ) => (
-            <div className=" hover-card col-lg-4 col-md-6 col-sm-12">
-                <Link className="hover-card" to={`/view/${restaurant.id}`}>
+            <div className="col-lg-4 col-md-6 col-sm-12" key={index}>
+                <Link to={`/view/${restaurant.id}`}>
                     <div className="card text-dark bg-light mg-3">
                         <img src={restaurant.logo} alt={`${restaurant.name} logo`} className="card-img-top" />
                         <div className="card-body">
@@ -69,5 +69,5 @@ class Restaurants extends React.Component {
     }
 }
 
-export default Restaurants;
+export default Restaurant;
 

@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import Comments from '../Comments';
+import Footer from '../Layout/Footer';
+import Navbar from '../Layout/Navbar';
+import NewComment from '../NewComment';
 
 class Restaurant extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            restaurant: { description: "" }
+            restaurant: ''
         };
         this.addHtmlEntities = this.addHtmlEntities.bind(this);
     }
@@ -18,7 +21,8 @@ class Restaurant extends React.Component {
             }
         } = this.props;
 
-        const url = `/api/v1/show/${id}`;
+        const url = `/api/v1/restaurants/${id}`;
+        const urlComments = `/api/v1/restaurants/${id}/comments`;
 
         fetch(url)
         .then(response => {
@@ -40,7 +44,7 @@ class Restaurant extends React.Component {
 
     render() {
         const{ restaurant } = this.state;
-        
+        console.log(restaurant);
         const restaurantDescription = this.addHtmlEntities(restaurant.description);
 
         return (
@@ -71,12 +75,11 @@ class Restaurant extends React.Component {
 
                 <section className="container comments">
                     <h4>Comments</h4>
+                    <NewComment />
                 </section>
 
                 {/* Landing Page Footer */}
-                <footer>
-                    <p className="display-5 vw-50 text-center">Created by <b>Brayan Lopez</b></p>
-                </footer>
+                <Footer />
             </main>
         )
     }

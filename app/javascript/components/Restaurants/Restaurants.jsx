@@ -2,10 +2,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // Importing Restaurants Object to render the returned result from BackEnd into the Landingpage
-import Restaurants from '../components/Restaurants';
-import Navbar from "./Navbar";
+import Restaurant from './Restaurant';
+import Navbar from "../Layout/Navbar";
+import Footer from "../Layout/Footer";
 
-class Home extends React.Component {
+class Restaurants extends React.Component {
     render() {
         return (
             // Need to update layout later
@@ -24,15 +25,13 @@ class Home extends React.Component {
                 </header>
 
                 {/* Rendering Restaurant list */}
-                <Restaurants />
+                <Restaurant />
 
                 {/* Landing Page Footer */}
-                <footer>
-                    <p className="display-5 vw-50 text-center">Created by <b>Brayan Lopez</b></p>
-                </footer>
+                <Footer />
             </main>
         );
     }
 }
 
-export default Home;
+export default Restaurants;

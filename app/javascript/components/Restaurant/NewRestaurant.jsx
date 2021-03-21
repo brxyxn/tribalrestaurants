@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import Footer from '../Layout/Footer';
+import Navbar from '../Layout/Navbar';
 
 class NewRestaurant extends React.Component{
     constructor(props){
@@ -99,9 +100,7 @@ class NewRestaurant extends React.Component{
                 </div>
 
                 {/* Landing Page Footer */}
-                <footer>
-                    <p className="display-5 vw-50 text-center">Created by <b>Brayan Lopez</b></p>
-                </footer>
+                <Footer />
             </main>
         );
     }

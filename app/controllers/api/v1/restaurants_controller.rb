@@ -21,6 +21,8 @@ class Api::V1::RestaurantsController < ApplicationController
   # find method to find restaurant with an specific :ID param, assigning it to @restaurant
   # returning a JSON response.
   def show
+    @restaurant ||= Restaurant.find(params[:id])
+    comment = @restaurant.comments.all
     if restaurant
       render json: restaurant
     else
@@ -36,14 +38,21 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: { message: 'Restaurant deleted!' }
   end
 
-  # Private methods explained above.
+  # Private methods to use in the controller only and setting permitted params
+  # to the restaurant object, updated with Require, since Rails console was
+  # returning Unpermitted parameter: :restaurant, that solved the error.
   private
   def restaurant_params
-    params.permit(:name, :description, :logo)
+    params.require(:restaurant).permit(:name, :description, :logo)
   end
 
   def restaurant
     @restaurant ||= Restaurant.find(params[:id])
+  end
+
+  def comment
+    @restaurant ||= Restaurant.find(params[:id])
+    comment = @restaurant.comments
   end
 end
 
