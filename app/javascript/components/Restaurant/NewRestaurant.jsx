@@ -29,7 +29,6 @@ class NewRestaurant extends React.Component{
     // Setting a value to each user input using computed property names, see more:
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names
     onChange(event){
-        console.log(event)
         this.setState({ [event.target.name]: event.target.value });
     }
 
@@ -64,7 +63,6 @@ class NewRestaurant extends React.Component{
         })
         .then(response => {
             if(response.ok){
-                console.log(response)
                 return response.json();
             }
             throw new Error("Returning an error from JSON response while creating a new post.");
