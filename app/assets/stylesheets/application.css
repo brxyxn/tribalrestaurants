@@ -19,6 +19,7 @@
 html, body {
     max-width: 100vw;
     height: 100vh;
+    background: #f1f1f1;
 }
 main {
     max-width: 100vw;
@@ -70,113 +71,39 @@ main {
     text-decoration: none;
 }
 .restaurant-list .card{
-    z-index: 1;
-    border-radius: 10px !important;
+    /* z-index: 1;
+    border-radius: 10px !important; */
 }
 .restaurant-list .card .card-body{
-    background: #fff;
-    overflow: hidden;
+    /* background: #fff;
+    overflow: hidden; */
 }
 /* Card Hover Effect */
-.card-hover-effect:hover{
-    /* border: 1px solid #293241; */
-    box-shadow: 0 5px 35px 0px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-.card-hover-effect:hover:before, .card-hover-effect:hover:after{
-    display: block;
-    content: '';
-    position: absolute;
+.box-wrap{
+    display:flex;
+    justify-content:center;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
-    height: 100%;
-    background: #13668A;
-    border-radius: 10px;
-    z-index: -1;
-    animation: 1.5s clockwise infinite;
-}
-.card-hover-effect:hover:after{
-    background: #EDBA80;
-    animation: 1.5s reverseclockwise infinite;
-}
-
-@keyframes clockwise{
-    0% {
-        top: -5px;
-        left: 0;
-    }
-    12% {
-        top: -2px;
-        left: 2px;
-    }
-    25% {
-        top: 0;
-        left: 5px;
-    }
-    37% {
-        top: 2px;
-        left: 2px;
-    }
-    5% {
-        top: 5px;
-        left: 0px;
-    }
-    62% {
-        top: 2px;
-        left: -2px;
-    }
-    75% {
-        top: 0;
-        left: 5px;
-    }
-    87% {
-        top: -2px;
-        left: -2px;
-    }
-    100% {
-        top: -5px;
-        left: 0;
-    }
-}
-
-@keyframes reverseclockwise{
-    0% {
-        bottom: -5px;
-        right: 0;
-    }
-    12% {
-        bottom: -2px;
-        right: 2px;
-    }
-    25% {
-        bottom: 0;
-        right: 5px;
-    }
-    37% {
-        bottom: 2px;
-        right: 2px;
-    }
-    5% {
-        bottom: 5px;
-        right: 0;
-    }
-    62% {
-        bottom: 2px;
-        right: -2px;
-    }
-    75% {
-        bottom: 0;
-        right: -5px;
-    }
-    87% {
-        bottom: -2px;
-        right: -2px;
-    }
-    100% {
-        bottom: -5px;
-        right: 0;
-    }
-}
-
+  }
+  .box{
+    /* background:white; */
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    border-radius:3px;
+    transition:.2s all;
+  }
+  .box-wrap:hover .box{
+    filter:blur(3px);
+    opacity:.5;
+    transform: scale(.98);
+    box-shadow:none;
+  }
+  .box-wrap:hover .box:hover{
+    transform:scale(2);
+    filter:blur(0px);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
+  }
 
 /* Footer Styles */
 footer.bg-footer {

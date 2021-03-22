@@ -35,9 +35,9 @@ const Restaurant = () => {
     )
     const allRestaurants = restaurants.map( post => {
         return(
-            <div key={post.id} className="col-lg-4 col-md-6 col-sm-12">
-                <Link to={`/view/${post.id}`}>
-                    <div className="card text-dark bg-light mg-3 card-hover-effect">
+            <div className="col-lg-4 col-md-6 col-sm-12">
+                <Link to={`/view/${post.id}`} key={post.id}  className="box">
+                    <div className="card text-dark bg-light mg-3">
                         <div className="card-img-top">
                             <img src={post.attributes.logo} alt={`${post.attributes.name} logo`} className="card-img-top"/>
                         </div>
@@ -52,8 +52,10 @@ const Restaurant = () => {
     })
     return (
         <section className="restaurant-list bg-light d-flex justify-content-center">
-            <div className="col-10 d-flex row d-flex justify-content-around">
-                {restaurants.length > 0 ? allRestaurants : noRestaurants}
+            <div className="col-10 d-flex row d-flex justify-content-center">
+                <div className="box-wrap">
+                    {restaurants.length > 0 ? allRestaurants : noRestaurants}
+                </div>
             </div>
         </section>
     )
