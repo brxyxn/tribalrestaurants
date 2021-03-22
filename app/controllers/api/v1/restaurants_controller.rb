@@ -13,7 +13,7 @@ class Api::V1::RestaurantsController < ApplicationController
   def create
     restaurant = Restaurant.create!(restaurant_params)
     if restaurant.save
-      render json: RestaurantSerializer.new(restaurant).serialized_json
+      render json: restaurant
     else
       render json: { error: resturant.errors.messages }
     end

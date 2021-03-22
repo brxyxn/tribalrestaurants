@@ -1,64 +1,9 @@
 // www.example.com/new#create
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import Footer from '../Layout/Footer';
 import Navbar from '../Layout/Navbar';
-
-const RestaurantForm = (props) => {
-    const { name, description } = ""
-    const { post, setPost } = useState({})
-
-    useEffect(() => {
-        const url = `api/v1/restaurants/`
-
-        axios.get(url)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(response => console.log('Something went wrong', response))
-    }, [])
-
-    const onChange = (e) => {
-        e.preventDefault()
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-    }
-
-    return(
-        // Need to update layout later
-        <main>
-            {/* Navbar Layout */}
-            <Navbar />
-
-            {/* Displaying Restaurant Creation Form */}
-            <div className="container my-5">
-                <div className="row">
-                    <div className="col-12">
-                        <h1 className="font-weight-normal mb-5">Add a new restaurant</h1>
-                        <form>
-                            <div className="form-group">
-                                <label htmlFor="restaurantName">Restaurant Name</label>
-                                <input type="text" name="name" id="restaurantName" className="form-control" required />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="restaurantDescription">Restaurant Description</label>
-                                <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required />
-                            </div>
-                            <button type="submit" className="btn btn-primary mt-3 hvr-push">Create Restaurant</button>
-                            <Link to="/" className="btn btn-link mt-3">Back to restaurants</Link>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            {/* Landing Page Footer */}
-            <Footer />
-        </main>
-    )
-}
 
 class NewRestaurant extends React.Component{
     constructor(props){
@@ -84,6 +29,7 @@ class NewRestaurant extends React.Component{
     // Setting a value to each user input using computed property names, see more:
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names
     onChange(event){
+        console.log(event)
         this.setState({ [event.target.name]: event.target.value });
     }
 
@@ -107,8 +53,7 @@ class NewRestaurant extends React.Component{
         // Getting token from rails meta security token, for more info check this out:
         // https://guides.rubyonrails.org/security.html
         const token = document.querySelector('meta[name="csrf-token"]').content;
-        // console.log("Token object");
-        // console.log(token);
+
         fetch(url, {
             method: "POST",
             headers: {
@@ -119,6 +64,7 @@ class NewRestaurant extends React.Component{
         })
         .then(response => {
             if(response.ok){
+                console.log(response)
                 return response.json();
             }
             throw new Error("Returning an error from JSON response while creating a new post.");
@@ -131,9 +77,37 @@ class NewRestaurant extends React.Component{
     render(){
         return(
             // Need to update layout later
-            <main></main>
+            // Need to update layout later
+            <main>
+                {/* Navbar Layout */}
+                <Navbar />
+
+                {/* Displaying Restaurant Creation Form */}
+                <div className="container my-5">
+                    <div className="row">
+                        <div className="col-12">
+                            <h1 className="font-weight-normal mb-5">Add a new restaurant</h1>
+                            <form onSubmit={this.onSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="restaurantName">Restaurant Name</label>
+                                    <input type="text" name="name" id="restaurantName" className="form-control" required onChange={this.onChange} />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="restaurantDescription">Restaurant Description</label>
+                                    <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required onChange={this.onChange} />
+                                </div>
+                                <button type="submit" className="btn btn-primary mt-3">Create Restaurant</button>
+                                <Link to="/" className="btn btn-link mt-3">Back to restaurants</Link>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Landing Page Footer */}
+                <Footer />
+            </main>
         );
     }
 }
 
-export default RestaurantForm;
+export default NewRestaurant;

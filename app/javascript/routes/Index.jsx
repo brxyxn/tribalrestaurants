@@ -2,8 +2,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
-import Restaurant from "../components/Restaurant";
 import NewRestaurant from "../components/NewRestaurant";
+import Restaurant from "../components/Restaurant/Restaurant";
+
 
 export default (
     <Router>

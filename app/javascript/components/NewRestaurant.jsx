@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from './Layout/Navbar';
 
 class NewRestaurant extends React.Component{
     constructor(props){
@@ -49,8 +49,7 @@ class NewRestaurant extends React.Component{
         // Getting token from rails meta security token, for more info check this out:
         // https://guides.rubyonrails.org/security.html
         const token = document.querySelector('meta[name="csrf-token"]').content;
-        // console.log("Token object");
-        // console.log(token);
+        
         fetch(url, {
             method: "POST",
             headers: {
