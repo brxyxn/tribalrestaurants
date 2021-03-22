@@ -11,12 +11,12 @@ const Navbar = props => {
             <button className="navbar-toggler" type="button" data-toggle={`${!isCollapsed ? 'collapse' : ''}`} data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded={!isCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleCollapseState}>
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className={`${!isCollapsed ? 'collapsing' : 'collapse'} navbar-collapse`} id="navbarContent">
+            <div className={`${!isCollapsed ? 'collapsing' : 'collapse'} navbar-collapse d-lg-flex justify-content-end`} id="navbarContent">
                 <ul className="navbar-nav text-center">
-                    <li className="nav-item">
+                    <li className="nav-item w-100">
                         <Link to="/" className="nav-link">Home</Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item w-100">
                         <Link to="/new" className="btn btn-outline-primary">Create</Link>
                     </li>
                 </ul>
