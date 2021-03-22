@@ -27,7 +27,7 @@ class Api::V1::RestaurantsController < ApplicationController
   def update
     restaurant = Restaurant.find_by(params[:id])
     if restaurant.update(restaurant_params)
-      render json: RestaurantSerializer.new(restaurant).serialized_json
+      render json: RestaurantSerializer.new(restaurant, options).serialized_json
     else
       render json: { error: resturant.errors.messages }
     end
@@ -38,9 +38,8 @@ class Api::V1::RestaurantsController < ApplicationController
   # returning a JSON response.
   # GET /api/v1/restaurants/:id(.:format) >> api/v1/restaurants#show
   def show
-    if restaurant
-      render json: RestaurantSerializer.new(restaurant, options).serialized_json
-    end
+    restaurant = Restaurant.find_by(id: params[:id])
+    render json: RestaurantSerializer.new(restaurant, options).serialized_json
   end
 
   # Creating Destroy method, in case the restaurant needs to be removed since the website is going to be 
@@ -74,7 +73,7 @@ class Api::V1::RestaurantsController < ApplicationController
     comment = @restaurant.comments
   end
 
-  # fast_jsonapi serializer
+  # fast_jsonapi serializer // Pending
   def serializer(records, options = {})
   AirlineSerializer
     .new(records, options)

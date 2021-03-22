@@ -3,9 +3,9 @@ class Api::V1::CommentsController < ApplicationController
   # will allow to POST username and description (comment)
   # POST /api/v1/comments
   def create
-    comment = restaurant.comments.create!(comment_params)
-    if comment
-      render json: comment
+    comment = restaurant.comments.new(comment_params)
+    if comment.save
+      render json: CommentSerializer.new(comment).serialized_json
     else
       render json: comment.errors
     end

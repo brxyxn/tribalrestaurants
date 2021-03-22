@@ -1,20 +1,19 @@
 // Updating this component since using useState and useEffect will do it better and easier than
 // previous way used in the begining.
 // www.example.com/view/$id
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Footer from '../Layout/Footer';
 import Navbar from '../Layout/Navbar';
 import CommentForm from './CommentForm';
-import Post from './Post';
+import Post from './Post'; //
+import Comment from './Comment'
 
 const Restaurant = (props) => {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState({});
-    const [comment, setComment] = useState({});
+    const [comment, setComment] = useState({username: '', body: ''});
     const [loaded, setLoaded] = useState(false) // This const will allow us to pass the object once it's loaded
-    const [count, setCount] = useState(0);
 
     // GET index 
     // GET /api/v1/restaurants >> api/v1/restaurants#index
@@ -35,8 +34,6 @@ const Restaurant = (props) => {
         e.preventDefault()
 
         setComment(Object.assign({}, comment, {[e.target.name]: e.target.value}))
-
-        console.log('comment', comment)
     }
 
     const onSubmit = (e) => {
@@ -45,16 +42,35 @@ const Restaurant = (props) => {
         const token = document.querySelector('meta[name="csrf-token"]').content
         axios.defaults.headers.common['X-CSRF-TOKEN'] = token
 
+        // POST url
         const url = '/api/v1/comments'
-        const restaurant_id = post.data.id
+        // Get our restaurant_ID
+        const restaurant_id = parseInt(post.data.id)
 
-        axios.post(url, {comment, restaurant_id})
+        // POST to create our new comment/review
+        axios.post(url, {...comment, restaurant_id})
         .then(response => {
-            const included = [...post.included, response.data]
+            const included = [...post.included, response.data.data]
             setPost({...post, included})
             setComment({username: '', body: ''})
         })
-        .catch(response => {})
+        .catch(response => console.log(response))
+    }
+
+    let listComments
+    if (loaded && post.included.length > 0){
+        listComments = post.included.map((item, index) => {
+            return(
+                <Comment
+                key={index}
+                attributes={item.attributes}
+                />
+            )
+        })
+    } else {
+        listComments = (
+            <p>No reviews yet.</p>
+        )
     }
 
     return(
@@ -62,90 +78,43 @@ const Restaurant = (props) => {
             {/* Navbar Layout */}
             <Navbar />
 
-            {/* Post => Restaurant object, rendered only when data gets loaded to the variable */}
             {
                 loaded &&
-                <div>
+                <Fragment>
+                    {/* Post => Restaurant object, rendered only when data gets loaded to the variable */}
                     <Post
                     attributes={post.data.attributes}
-                    comments={comments}
+                    comments={comments.included}
                     />
 
+                    {/* Comments List */}
+                    <section className="container">
+                        <div className="row my-5">
+                            <div className="col-12 d-flex justify-content-center">
+                                <div className="card w-100">
+                                    <div className="card-header">
+                                        <h5>{comments.length > 1 ? `${comments.length} Reviews` : `${comments.length} Review`}</h5>
+                                    </div>
+                                    <div className="card-body">
+                                        {listComments}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    {/* CommentForm to create a new comment */}
                     <CommentForm
                     onChange={onChange}
                     onSubmit={onSubmit}
                     attributes={post.data.attributes}
-                    comments={comments}
                      />
-                </div>
+                </Fragment>
             }
 
             <Footer />
         </main>
     )
 }
-// Need to update layout later
-        // <main>
-        //     {/* Navbar Layout */}
-        //     <Navbar />
-
-        //     {/* Displaying Restaurant information */}
-        //     <section className="container my-5">
-        //         <div className="links">
-        //             <Link to="/" className="btn btn-link">Back to restaurants</Link>
-        //         </div>
-        //         <div className="row">
-        //             <div className="col-lg-3">
-        //                 <img src={restaurant.logo} alt={`${restaurant.name} logo`} className="col-12 img-fluid" />
-        //             </div>
-        //             <div className="col-lg-9">
-        //                 <h1 className="display-4">{restaurant.name}</h1>
-        //                 <div dangerouslySetInnerHTML={{__html: `${restaurantDescription}`}} />
-        //             </div>
-        //         </div>
-        //     </section>
-
-        //     <section className="container pictures">
-        //         <h4>Pictures</h4>
-        //     </section>
-
-        //     <section className="container comments">
-        //         <h4>Comments</h4>
-        //         <NewComment />
-        //     </section>
-
-        //     {/* Landing Page Footer */}
-        //     <Footer />
-        // </main>
-    
-
-
-    // componentDidMount() {
-    //     const id = this.props.match.params.id;
-    //     const url = `/api/v1/restaurants/${id}`;
-
-    //     fetch(url)
-    //     .then(response => {
-    //         if (response.ok){
-    //             return response.json();
-    //         }
-    //         throw new Error(`Returning an error from JSON response while getting an specific post. Post id: ${id}`);
-    //     })
-    //     .then(response => this.setState({ restaurant: response }))
-    //     .catch(() => this.props.history.push("/"));
-    // }
-
-    // Adding addHtmlEntities method to replace all HTML opening and closing brackets.
-    // addHtmlEntities(str){
-    //     return String(str)
-    //     .replace(/&lt;/g, "<")
-    //     .replace(/&gt;/g, ">");
-    // }
-
-    // render() {
-    //     const { restaurant } = this.state;
-    //     const restaurantDescription = this.addHtmlEntities(restaurant.description);
-    //     return()
-    // }
 
 export default Restaurant;

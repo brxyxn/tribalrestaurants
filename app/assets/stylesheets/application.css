@@ -18,7 +18,7 @@
 /* General Styles */
 html, body {
     max-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background: #f1f1f1;
 }
 main {
@@ -156,7 +156,182 @@ main {
     animation-timing-function: linear;
     -webkit-animation-iteration-count: 1;
     animation-iteration-count: 1;
-  }
+}
+
+/* Glith Animation */
+.wrapper{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper h3.glitch{
+    position: relative;
+    padding: 30px;
+    font-size: 5rem;
+}
+.wrapper h3.glitch::before, .wrapper h3.glitch::after {
+    padding: 30px;
+    color: white;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+}
+.wrapper h3.glitch::before {
+    left: 3px;
+    text-shadow: -2px 0 red;
+    animation-name: glitch-animation-1;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse-alternate;
+}
+.wrapper h3.glitch::after {
+    left: -3px;
+    text-shadow: -2px 0 blue;
+    animation-name: glitch-animation-2;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse-alternate;
+}
+  
+@keyframes glitch-animation-1 {
+0% {
+clip: rect(24px, 350px, 126px, 30px);
+}
+5% {
+clip: rect(15px, 350px, 136px, 30px);
+}
+10% {
+clip: rect(12px, 350px, 147px, 30px);
+}
+15% {
+clip: rect(132px, 350px, 33px, 30px);
+}
+20% {
+clip: rect(136px, 350px, 22px, 30px);
+}
+25% {
+clip: rect(69px, 350px, 68px, 30px);
+}
+30% {
+clip: rect(86px, 350px, 10px, 30px);
+}
+35% {
+clip: rect(43px, 350px, 128px, 30px);
+}
+40% {
+clip: rect(52px, 350px, 65px, 30px);
+}
+45% {
+clip: rect(10px, 350px, 5px, 30px);
+}
+50% {
+clip: rect(8px, 350px, 16px, 30px);
+}
+55% {
+clip: rect(120px, 350px, 34px, 30px);
+}
+60% {
+clip: rect(116px, 350px, 91px, 30px);
+}
+65% {
+clip: rect(94px, 350px, 53px, 30px);
+}
+70% {
+clip: rect(9px, 350px, 126px, 30px);
+}
+75% {
+clip: rect(1px, 350px, 27px, 30px);
+}
+80% {
+clip: rect(7px, 350px, 78px, 30px);
+}
+85% {
+clip: rect(141px, 350px, 93px, 30px);
+}
+90% {
+clip: rect(20px, 350px, 64px, 30px);
+}
+95% {
+clip: rect(6px, 350px, 105px, 30px);
+}
+100% {
+clip: rect(103px, 350px, 113px, 30px);
+}
+}
+@keyframes glitch-animation-2 {
+0% {
+clip: rect(123px, 350px, 49px, 30px);
+}
+5% {
+clip: rect(27px, 350px, 133px, 30px);
+}
+10% {
+clip: rect(50px, 350px, 16px, 30px);
+}
+15% {
+clip: rect(55px, 350px, 127px, 30px);
+}
+20% {
+clip: rect(82px, 350px, 104px, 30px);
+}
+25% {
+clip: rect(35px, 350px, 95px, 30px);
+}
+30% {
+clip: rect(137px, 350px, 57px, 30px);
+}
+35% {
+clip: rect(60px, 350px, 49px, 30px);
+}
+40% {
+clip: rect(130px, 350px, 6px, 30px);
+}
+45% {
+clip: rect(67px, 350px, 4px, 30px);
+}
+50% {
+clip: rect(113px, 350px, 58px, 30px);
+}
+55% {
+clip: rect(102px, 350px, 65px, 30px);
+}
+60% {
+clip: rect(107px, 350px, 58px, 30px);
+}
+65% {
+clip: rect(19px, 350px, 61px, 30px);
+}
+70% {
+clip: rect(119px, 350px, 82px, 30px);
+}
+75% {
+clip: rect(90px, 350px, 82px, 30px);
+}
+80% {
+clip: rect(25px, 350px, 105px, 30px);
+}
+85% {
+clip: rect(133px, 350px, 39px, 30px);
+}
+90% {
+clip: rect(27px, 350px, 102px, 30px);
+}
+95% {
+clip: rect(56px, 350px, 6px, 30px);
+}
+100% {
+clip: rect(140px, 350px, 134px, 30px);
+}
+}
 
 /* Footer Styles */
 footer.bg-footer {
