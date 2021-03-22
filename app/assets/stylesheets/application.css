@@ -48,6 +48,12 @@ main {
     border-color: #33A6D6 !important;
 }
 
+/* Navbar */
+.navbar-collapse, .navbar-brand{
+    flex-grow: 0;
+    flex-basis: 0;
+}
+
 /* Cards */
 .restaurant-list{
     max-width: 100vw;
@@ -63,11 +69,13 @@ main {
 .restaurant-list a:active{
     text-decoration: none;
 }
-.card{
+.restaurant-list .card{
     z-index: 1;
+    border-radius: 10px !important;
 }
-.card .card-body{
+.restaurant-list .card .card-body{
     background: #fff;
+    overflow: hidden;
 }
 /* Card Hover Effect */
 .card-hover-effect:hover{
@@ -82,13 +90,13 @@ main {
     width: 100%;
     height: 100%;
     background: #13668A;
-    border-radius: 8px;
+    border-radius: 10px;
     z-index: -1;
-    animation: 1.3s clockwise infinite;
+    animation: 1.5s clockwise infinite;
 }
 .card-hover-effect:hover:after{
     background: #EDBA80;
-    animation: 1.8s reverseclockwise infinite;
+    animation: 1.5s reverseclockwise infinite;
 }
 
 @keyframes clockwise{
@@ -132,40 +140,40 @@ main {
 
 @keyframes reverseclockwise{
     0% {
-        top: -5px;
-        left: 0;
+        bottom: -5px;
+        right: 0;
     }
     12% {
-        top: -2px;
-        left: 2px;
+        bottom: -2px;
+        right: 2px;
     }
     25% {
-        top: 0;
-        left: 5px;
+        bottom: 0;
+        right: 5px;
     }
     37% {
-        top: 2px;
-        left: 2px;
+        bottom: 2px;
+        right: 2px;
     }
     5% {
-        top: 5px;
-        left: 0;
+        bottom: 5px;
+        right: 0;
     }
     62% {
-        top: 2px;
-        left: -2px;
+        bottom: 2px;
+        right: -2px;
     }
     75% {
-        top: 0;
-        left: -5px;
+        bottom: 0;
+        right: -5px;
     }
     87% {
-        top: -2px;
-        left: -2px;
+        bottom: -2px;
+        right: -2px;
     }
     100% {
-        top: -5px;
-        left: 0;
+        bottom: -5px;
+        right: 0;
     }
 }
 

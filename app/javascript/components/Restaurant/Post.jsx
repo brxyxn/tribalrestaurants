@@ -25,21 +25,25 @@ const Post = (props) => {
                 <Link to="/" className="btn btn-link">Back to restaurant</Link>
             </div>
             <div className="row">
-                <div className="col-12 d-flex align-items-center">
-                    <div className="col-lg-3">
-                        <img src={logo} alt={name} className="img-fluid" />
-                    </div>
-                    <div className="col-lg-9">
-                        <h1 className="display-4">{name}</h1>
+                <div className="container col-12 d-flex align-items-center">
+                    <div className="row">
+                        <div className="col-lg-3 col-md-4 col-sm-12 col-12">
+                            <img src={logo} alt={name} className="w-100 img-fluid" />
+                        </div>
+                        <div className="col-lg-9 col-md-8 col-sm-12 col-12">
+                            <h1 className="d-none d-lg-block display-4">{name}</h1>
+                            <h1 className="d-lg-none d-block h-3">{name}</h1>
+                        </div>
                     </div>
                 </div>
                 <div className="col-lg-12">
-                    <div dangerouslySetInnerHTML={{__html: `${addHtmlEntities(description)}`}} />
+                    <div dangerouslySetInnerHTML={{__html: `${addHtmlEntities(description)}`}} className="text-justify" />
                 </div>
             </div>
-            <div className="row">
-                <div className="col-12 d-flex">
-                    <div className="card">
+            
+            <div className="row my-3">
+                <div className="col-12 d-flex justify-content-center">
+                    <div className="card w-100">
                         <div className="card-body">
                             <p>Here goes the comment</p>
                             <footer className="blockquote-footer">Here goes the username</footer>
