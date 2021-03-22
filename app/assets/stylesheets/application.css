@@ -71,42 +71,42 @@ main {
     text-decoration: none;
 }
 /* Card Hover Effect */
-div.box-wrap{
+.box-wrap{
     display:flex;
     justify-content:center;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
 }
-div.box{
+.box .card{
     /* background:white; */
     -webkit-transition: 0.2s all;
     -moz-transition: 0.2s all;
     -o-transition: 0.2s all;
     transition: 0.2s all;
 }
-div.box>a{
+.box .card{
     background: #fff;
     box-shadow: 0 2px 3px 0px rgba(0,0,0,0.25);
 }
-.box-wrap:hover div.box{
+.box-wrap:hover .box .card{
     -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
     -o-filter: blur(3px);
-    filter: blur(3px);
-    opacity: 0.5;
+    filter: blur(3px)!important;
+    opacity: 0.5!important;
     transform: scale(.98);
 }
-.box-wrap:hover div.box:hover{
+.box-wrap:hover .box:hover .card{
     -webkit-transform: scale(1.02);
     -moz-transform: scale(1.02);
     -o-transform: scale(1.02);
-    transform: scale(1.02);
+    transform: scale(1.02)!important;
     -webkit-filter: blur(0px);
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
-    filter: blur(0px);
-    opacity: 1;
+    filter: blur(0px)!important;
+    opacity: 1!important;
     box-shadow: 0 8px 20px 0px rgba(0,0,0,0.125);
 }
 

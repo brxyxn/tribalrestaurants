@@ -35,27 +35,23 @@ const Restaurant = () => {
     )
     const allRestaurants = restaurants.map( post => {
         return(
-            <div className="col-lg-4 col-md-6 col-sm-12 box">
-                <Link to={`/view/${post.id}`} key={post.id} >
-                    <div className="card text-dark bg-light mg-3">
-                        <div className="card-img-top">
-                            <img src={post.attributes.logo} alt={`${post.attributes.name} logo`} className="card-img-top"/>
-                        </div>
-                        <div className="card-body">
-                            <h4 className="card-title">{post.attributes.name}</h4>
-                            <div className="card-text" dangerouslySetInnerHTML={{__html: `${addHtmlEntities(post.attributes.description)}`}} />
-                        </div>
+            <Link to={`/view/${post.id}`} key={post.id} className="col-lg-4 col-md-6 col-sm-12 box">
+                <div className="card text-dark bg-light mg-3">
+                    <div className="card-img-top">
+                        <img src={post.attributes.logo} alt={`${post.attributes.name} logo`} className="card-img-top"/>
                     </div>
-                </Link>
-            </div>
+                    <div className="card-body">
+                        <h4 className="card-title">{post.attributes.name}</h4>
+                        <div className="card-text" dangerouslySetInnerHTML={{__html: `${addHtmlEntities(post.attributes.description)}`}} />
+                    </div>
+                </div>
+            </Link>
         )
     })
     return (
         <section className="restaurant-list bg-light d-flex justify-content-center">
-            <div className="col-10 d-flex row d-flex justify-content-center">
-                <div className="box-wrap">
-                    {restaurants.length > 0 ? allRestaurants : noRestaurants}
-                </div>
+            <div className="w-90 d-flex box-wrap">
+                {restaurants.length > 0 ? allRestaurants : noRestaurants}
             </div>
         </section>
     )
