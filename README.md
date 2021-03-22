@@ -32,7 +32,22 @@ Remember you might need to update your credentials in `config/database.yml`
 
 ---
 
-## API Routes
+## How did I code it?
+
+Since I have been *learning* React.js for a couple of months now, I started coding everything from plain/basic React.js components and modules. However, I found some inconveniences to perform all the tasks and requirements for this project, I am not that expert on React.js, so I had to read a lot of documentation, I already had an idea of how React.js works and where to start because I have coded *Angular*, and they are very similar, and I consider myself a fast learner so was not too hard to understand what I needed to do for this project. In the end, I found some other helpful resources, I used those resources to *refactor code*, almost everything with **Axios** and other components.
+
+In the Rails side (Back End), I had some experience coding applications for two or three years now, so I felt very comfortable with it, and I knew where to start and what I needed to do. I really love to create good *graphical/looking* stuff so I dedicated some time to imagine what I wanted the app to look like, and due to time I was unable to focus too much time on *UI/UX*, but I think that looks nice. Even though I don’t get the job, this *challenge* made me assess my current skills and figure out what I still have to focus on while I get certified in Front End Development... **Practice makes the master!**
+
+---
+
+## API
+### Authentication
+For security purposes [Rails Security](https://guides.rubyonrails.org/security.html) explains we need to keep our API secure from attacks, and one way is thru CSRF (Cross-Site Request Forgery) which is explained in [this link](https://guides.rubyonrails.org/security.html#cross-site-request-forgery-csrf), because of that by following guidelines every call will need a *CSRF Token* to validate the request is not a malicious code or attack to the API, keep that in mind when you connect your application to the API.
+
+### Status and Codes
+Since this API is not completed and for practical purposes if there is an error message from the API, specifically from controllers and the only standar code is **422**, so you can handle alerts with it and basic codes like 200, 400, 403, 404, & 500. However, this could be improved in a second version. (Planning to handle GraphQL)
+
+### Routes
 If you want to test or develop your own Front-End website with a framework other than the webpack included in this project (React) you might need to know the following routes to process your callback
 
 ```shell
@@ -82,3 +97,4 @@ add_foreign_key "comments", "restaurants"
 
 * This project was generated without test files `-T`, and without *CoffeeScript* `--skip-coffee`.
 * This project has a picture by default, because I ran out of money and my free trials to upload files (pictures) are expired, however, if you plan to deploy the project to **Heroku** I recommend you to use [**Simple File Upload**](https://devcenter.heroku.com/articles/simple-file-upload), in comparison with other platforms that bundles a package with an amazing performance, otherwise you can try with `aws-sdk` up to you.
+* I had to record all the references I used to create this project, however, I had to rush myself to complete the project as soon as possible, but I will try to recall all references to put them here as credits.
