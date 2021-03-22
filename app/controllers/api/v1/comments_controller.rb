@@ -12,7 +12,14 @@ class Api::V1::CommentsController < ApplicationController
   end
 
   # Pending to create destroy method
+  # /api/v1/comments/:id 
   def destroy
+    comment = Comment.find(comment_params)
+    if comment.destroy
+      head :no_content
+    else
+      render json: { error: comment.errors.messages }, status: 422
+    end
   end
 
   private

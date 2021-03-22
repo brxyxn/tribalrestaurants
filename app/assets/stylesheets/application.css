@@ -56,12 +56,6 @@ main {
     color: #33A6D6 !important;
 }
 
-/* Navbar */
-.navbar-collapse, .navbar-brand{
-    flex-grow: 0;
-    flex-basis: 0;
-}
-
 /* Cards */
 .restaurant-list{
     max-width: 100vw;

@@ -4,7 +4,7 @@ class Api::V1::RestaurantsController < ApplicationController
   # GET /api/v1/restaurants >> api/v1/restaurants#index
   def index
     restaurant = Restaurant.all.order(created_at: :desc)
-    render json: RestaurantSerializer.new(restaurant, options).serialized_json
+    render json: RestaurantSerializer.new(restaurant).serialized_json
   end
 
   # Creating Create method, using private restaurant_params method which validates allowed params to be created
@@ -13,9 +13,11 @@ class Api::V1::RestaurantsController < ApplicationController
   def create
     restaurant = Restaurant.create!(restaurant_params)
     if restaurant.save
+      #In the future this needs to be updated in the v2
+      #and serialize properly
       render json: restaurant
     else
-      render json: { error: resturant.errors.messages }
+      render json: { error: resturant.errors.messages }, status: 422
     end
   end
 
@@ -25,7 +27,7 @@ class Api::V1::RestaurantsController < ApplicationController
   # PATCH  /api/v1/restaurants/:id(.:format) >> api/v1/restaurants#update
   # PUT    /api/v1/restaurants/:id(.:format) >> api/v1/restaurants#update
   def update
-    restaurant = Restaurant.find_by(params[:id])
+    restaurant = Restaurant.find_by(id: params[:id])
     if restaurant.update(restaurant_params)
       render json: RestaurantSerializer.new(restaurant, options).serialized_json
     else
@@ -47,8 +49,12 @@ class Api::V1::RestaurantsController < ApplicationController
   # to avoid nil errors.
   # DELETE /api/v1/restaurants/:id(.:format) >> api/v1/restaurants#destroy
   def destroy
-    restaurant&.destroy
-    render json: { message: 'Restaurant deleted!' }
+    restaurant = Restaurant.find_by(id: params[:id])
+    if restaurant.destroy
+      head :no_content
+    else
+      render json: { error: resturant.errors.messages }
+    end
   end
 
   # Private methods to use in the controller only and setting permitted params
