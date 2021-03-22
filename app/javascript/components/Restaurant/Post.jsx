@@ -12,13 +12,13 @@ const Post = (props) => {
     }
     
     return(
-        <section className="container mt-4">
-            <div className="link">
-                <Link to="/" className="btn btn-link">Back to restaurant</Link>
+        <section className="container my-4">
+            <div className="link my-4">
+                <Link to="/" className="btn btn-secondary">Back to home</Link>
             </div>
             <div className="row">
                 <div className="container col-12 d-flex align-items-center">
-                    <div className="row">
+                    <div className="row mb-4">
                         <div className="col-lg-3 col-md-4 col-sm-12 col-12">
                             <img src={logo} alt={name} className="w-100 img-fluid" />
                         </div>

@@ -1,6 +1,7 @@
 // This document renders each Post to the LandingPage
 // www.example.com/#index
 import axios from 'axios';
+import { string } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
@@ -22,10 +23,17 @@ const Restaurant = () => {
 
     // Adding addHtmlEntities method to replace all HTML opening and closing brackets.
     const addHtmlEntities = (str) => {
-        return(str)
+        const string = str
+        let newString = string.length > 250 ? 
+                    string.substring(0, 197).trim(): 
+                    string
+        return(newString)
         .replace(/&lt;/g, "<")
         .replace(/&gt;/g, ">")
     }
+
+    // Lets trim description text to keep all posts the same lenght
+
 
     // We will use this timer of 1second just to let the component load and process
     // the condition of listRestaurants

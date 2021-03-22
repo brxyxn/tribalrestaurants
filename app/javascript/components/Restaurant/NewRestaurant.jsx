@@ -84,18 +84,22 @@ class NewRestaurant extends React.Component{
                 <div className="container my-5">
                     <div className="row">
                         <div className="col-12">
-                            <h1 className="font-weight-normal mb-5">Add a new restaurant</h1>
+                            <h2 className="font-weight-normal mb-5">Add a new restaurant</h2>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <label htmlFor="restaurantName">Restaurant Name</label>
-                                    <input type="text" name="name" id="restaurantName" className="form-control" required onChange={this.onChange} />
+                                    <input type="text" name="name" id="restaurantName" className="form-control" required onChange={this.onChange} placeholder="Restaurant name" />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="restaurantDescription">Restaurant Description</label>
-                                    <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required onChange={this.onChange} />
+                                    <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required onChange={this.onChange} placeholder="Write a brief introduction or description" />
                                 </div>
-                                <button type="submit" className="btn btn-primary mt-3">Create Restaurant</button>
-                                <Link to="/" className="btn btn-link mt-3">Back to restaurants</Link>
+                                <div className="form-group mt-3">
+                                    <div className="container">
+                                        <div className="row justify-content-between">
+                                            <button type="submit" className="btn btn-primary">Create Restaurant</button>
+                                            <Link to="/" className="btn btn-secondary">Back to home</Link>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

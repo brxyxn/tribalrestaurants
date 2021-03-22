@@ -64,6 +64,15 @@ main {
 .restaurant-list .card {
     margin: 2vh 0;
 }
+.restaurant-list .card::after{
+    content: "Show more \00BB";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: bold;
+    padding: 5px 8px;
+}
 .restaurant-list a,
 .restaurant-list a:visited,
 .restaurant-list a:hover,
@@ -133,7 +142,9 @@ main {
     }
   }
   .hvr-push,
-  .btn.btn-primary {
+  .btn.btn-primary,
+  .btn.btn-secondary,
+  .btn.btn-outline-primary {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -141,7 +152,9 @@ main {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   }
   .hvr-push:hover, .hvr-push:focus, .hvr-push:active,
-  .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active{
+  .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active,
+  .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary:active,
+  .btn.btn-outline-primary:hover,.btn.btn-outline-primary:focus,.btn.btn-outline-primary:active{
     -webkit-animation-name: hvr-push;
     animation-name: hvr-push;
     -webkit-animation-duration: 0.3s;
