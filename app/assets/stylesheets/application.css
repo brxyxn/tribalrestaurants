@@ -39,14 +39,21 @@ main {
 }
 
 /* Overriding primary color from Bootstrap */
-.btn-primary,
-.btn-outline-primary:hover{
+.btn.btn-primary,
+.btn.btn-outline-primary:hover{
     background-color: #33A6D6 !important;
+    border-color: #33A6D6 !important;
     color: #fff !important;
 }
-.btn-outline-primary{
-    color: #33A6D6 !important;
+.btn.btn-outline-primary,
+.btn.btn.primary:hover{
+    background-color: #fff;
     border-color: #33A6D6 !important;
+    color: #33A6D6 !important;
+}
+.btn.btn-primary:hover{
+    background-color: #fff!important;
+    color: #33A6D6 !important;
 }
 
 /* Navbar */
@@ -98,10 +105,10 @@ main {
     transform: scale(.98);
 }
 .box-wrap:hover .box:hover .card{
-    -webkit-transform: scale(1.02);
-    -moz-transform: scale(1.02);
-    -o-transform: scale(1.02);
-    transform: scale(1.02)!important;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1)!important;
     -webkit-filter: blur(0px);
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
@@ -109,6 +116,47 @@ main {
     opacity: 1!important;
     box-shadow: 0 8px 20px 0px rgba(0,0,0,0.125);
 }
+
+/* Push */
+@-webkit-keyframes hvr-push {
+    50% {
+      -webkit-transform: scale(0.95);
+      transform: scale(0.95);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  @keyframes hvr-push {
+    50% {
+      -webkit-transform: scale(0.95);
+      transform: scale(0.95);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  .hvr-push,
+  .btn.btn-primary {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .hvr-push:hover, .hvr-push:focus, .hvr-push:active,
+  .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active{
+    -webkit-animation-name: hvr-push;
+    animation-name: hvr-push;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+  }
 
 /* Footer Styles */
 footer.bg-footer {

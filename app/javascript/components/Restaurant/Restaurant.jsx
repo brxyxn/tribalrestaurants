@@ -12,6 +12,7 @@ import Post from './Post';
 const Restaurant = (props) => {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState({});
+    const [comment, setComment] = useState({});
     const [loaded, setLoaded] = useState(false) // This const will allow us to pass the object once it's loaded
     const [count, setCount] = useState(0);
 
@@ -30,6 +31,32 @@ const Restaurant = (props) => {
         .catch(response => console.log('Something went wrong', response));
     }, [])
 
+    const onChange = (e) => {
+        e.preventDefault()
+
+        setComment(Object.assign({}, comment, {[e.target.name]: e.target.value}))
+
+        console.log('comment', comment)
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        const token = document.querySelector('meta[name="csrf-token"]').content
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+
+        const url = '/api/v1/comments'
+        const restaurant_id = post.data.id
+
+        axios.post(url, {comment, restaurant_id})
+        .then(response => {
+            const included = [...post.included, response.data]
+            setPost({...post, included})
+            setComment({username: '', body: ''})
+        })
+        .catch(response => {})
+    }
+
     return(
         <main>
             {/* Navbar Layout */}
@@ -44,7 +71,12 @@ const Restaurant = (props) => {
                     comments={comments}
                     />
 
-                    <CommentForm />
+                    <CommentForm
+                    onChange={onChange}
+                    onSubmit={onSubmit}
+                    attributes={post.data.attributes}
+                    comments={comments}
+                     />
                 </div>
             }
 

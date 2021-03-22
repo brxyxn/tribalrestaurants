@@ -11,12 +11,12 @@ const CommentForm = (props) => {
                             <h5>Write a new comment</h5>
                         </div>
                         <div className="card-body">
-                            <form>
+                            <form onSubmit={props.onSubmit}>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" placeholder="Username"/>
+                                    <input type="text" className="form-control" placeholder="Username" name="username" onChange={props.onChange} value={props.comments.username} />
                                 </div>
                                 <div className="form-group">
-                                    <textarea name="body" id="" cols="30" rows="5" className="form-control vh-2" placeholder="Write a new comment"></textarea>
+                                    <textarea id="body" cols="30" rows="5" className="form-control vh-2" placeholder="Write a new comment" name="body" onChange={props.onChange} value={props.comments.body}></textarea>
                                 </div>
                                 <button className="btn btn-primary">Add new comment</button>
                             </form>

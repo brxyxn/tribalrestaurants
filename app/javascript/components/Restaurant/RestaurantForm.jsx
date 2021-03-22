@@ -19,6 +19,14 @@ const RestaurantForm = (props) => {
         .catch(response => console.log('Something went wrong', response))
     }, [])
 
+    const onChange = (e) => {
+        e.preventDefault()
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+    }
+
     return(
         // Need to update layout later
         <main>
@@ -39,7 +47,7 @@ const RestaurantForm = (props) => {
                                 <label htmlFor="restaurantDescription">Restaurant Description</label>
                                 <textarea name="description" id="restaurantDescription" cols="30" rows="10" className="form-control" required />
                             </div>
-                            <button type="submit" className="btn btn-primary mt-3">Create Restaurant</button>
+                            <button type="submit" className="btn btn-primary mt-3 hvr-push">Create Restaurant</button>
                             <Link to="/" className="btn btn-link mt-3">Back to restaurants</Link>
                         </form>
                     </div>

@@ -3,7 +3,7 @@ class Api::V1::CommentsController < ApplicationController
   # will allow to POST username and description (comment)
   # POST /api/v1/comments
   def create
-    comment = @restaurant.comments.create!(comment_params)
+    comment = restaurant.comments.create!(comment_params)
     if comment
       render json: comment
     else
@@ -15,6 +15,10 @@ class Api::V1::CommentsController < ApplicationController
   def destroy
   end
 
+  private
+  def restaurant
+    @restaurant ||= Restaurant.find(params[:restaurant_id])
+  end
   # Private methods to pass params
   def comment_params
     params.require(:comment).permit(:username, :body, :restaurant_id)
