@@ -35,8 +35,8 @@ const Restaurant = () => {
     )
     const allRestaurants = restaurants.map( post => {
         return(
-            <div className="col-lg-4 col-md-6 col-sm-12">
-                <Link to={`/view/${post.id}`} key={post.id}  className="box">
+            <div className="col-lg-4 col-md-6 col-sm-12 box">
+                <Link to={`/view/${post.id}`} key={post.id} >
                     <div className="card text-dark bg-light mg-3">
                         <div className="card-img-top">
                             <img src={post.attributes.logo} alt={`${post.attributes.name} logo`} className="card-img-top"/>

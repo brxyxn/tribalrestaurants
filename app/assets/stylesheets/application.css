@@ -71,36 +71,37 @@ main {
     text-decoration: none;
 }
 /* Card Hover Effect */
-.box-wrap{
+div.box-wrap{
     display:flex;
     justify-content:center;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
-.box{
+div.box{
     /* background:white; */
-    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
-    border-radius: 3px;
     -webkit-transition: 0.2s all;
     -moz-transition: 0.2s all;
     -o-transition: 0.2s all;
     transition: 0.2s all;
 }
-.box-wrap:hover .box{
+div.box>a{
+    background: #fff;
+    box-shadow: 0 2px 3px 0px rgba(0,0,0,0.25);
+}
+.box-wrap:hover div.box{
     -webkit-filter: blur(3px);
     -moz-filter: blur(3px);
     -o-filter: blur(3px);
     filter: blur(3px);
     opacity: 0.5;
     transform: scale(.98);
-    box-shadow: one;
 }
-.box-wrap:hover .box:hover{
-    -webkit-transform: scale(2);
-    -moz-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2);
+.box-wrap:hover div.box:hover{
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    transform: scale(1.02);
     -webkit-filter: blur(0px);
     -moz-filter: blur(0px);
     -o-filter: blur(0px);
