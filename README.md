@@ -37,16 +37,16 @@ If you want to test or develop your own Front-End website with a framework other
 
 ```shell
             Prefix Verb   URI Pattern                           Controller#Action
-api_v1_restaurants GET    /api/v1/restaurants(.:format)                                                                     api/v1/restaurants#index
-                   POST   /api/v1/restaurants(.:format)                                                                     api/v1/restaurants#create
- api_v1_restaurant GET    /api/v1/restaurants/:id(.:format)                                                                 api/v1/restaurants#show
-                   PATCH  /api/v1/restaurants/:id(.:format)                                                                 api/v1/restaurants#update
-                   PUT    /api/v1/restaurants/:id(.:format)                                                                 api/v1/restaurants#update
-                   DELETE /api/v1/restaurants/:id(.:format)                                                                 api/v1/restaurants#destroy
-   api_v1_comments POST   /api/v1/comments(.:format)                                                                        api/v1/comments#create
-    api_v1_comment DELETE /api/v1/comments/:id(.:format)                                                                    api/v1/comments#destroy
-              root GET    /                                                                                                 landingpage#index
-                   GET    /*path(.:format)                                                                                  landingpage#index
+api_v1_restaurants GET    /api/v1/restaurants(.:format)         api/v1/restaurants#index
+                   POST   /api/v1/restaurants(.:format)         api/v1/restaurants#create
+ api_v1_restaurant GET    /api/v1/restaurants/:id(.:format)     api/v1/restaurants#show
+                   PATCH  /api/v1/restaurants/:id(.:format)     api/v1/restaurants#update
+                   PUT    /api/v1/restaurants/:id(.:format)     api/v1/restaurants#update
+                   DELETE /api/v1/restaurants/:id(.:format)     api/v1/restaurants#destroy
+   api_v1_comments POST   /api/v1/comments(.:format)            api/v1/comments#create
+    api_v1_comment DELETE /api/v1/comments/:id(.:format)        api/v1/comments#destroy
+              root GET    /                                     landingpage#index
+                   GET    /*path(.:format)                      landingpage#index
 
 ```
 ---
