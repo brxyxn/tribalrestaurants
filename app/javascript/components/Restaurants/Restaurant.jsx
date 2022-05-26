@@ -37,11 +37,11 @@ const Restaurant = () => {
 
     // We will use this timer of 1second just to let the component load and process
     // the condition of listRestaurants
-    useEffect(() => {
-        setTimeout(() => {
-            setShow(true)
-        }, 1000)
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setShow(true)
+    //     }, 1000)
+    // }, [])
 
     let listRestaurants
     if (restaurants && restaurants.length > 0){
@@ -68,7 +68,7 @@ const Restaurant = () => {
         )
     }
 
-    if(!show) return null
+    // if(!show) return null
     return (
         <section className="restaurant-list bg-light d-flex justify-content-center">
             <div className="w-90 d-flex box-wrap">
